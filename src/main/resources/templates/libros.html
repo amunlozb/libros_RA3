@@ -1,0 +1,43 @@
+<html>
+<head><title>Examen RA3</title></head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<body>
+<div class="container">
+  <header class="text-center my-4">
+    <h1>Examen RA3 - Ángel Muñoz Lozano DAW2</h1>
+  </header>
+</div>
+
+<div class="row">
+  <!-- Sección de lista de libros -->
+  <div class="col">
+    <th:block th:if="${libros != null and not #lists.isEmpty(libros)}">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Autor</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Categoria</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l : ${libros}">
+          <td th:text="${l.id}">ID</td>
+          <td th:text="${l.autor}">Autor</td>
+          <td th:text="${l.nombre}">Nombre</td>
+          <td th:text="${l.precio}">Precio</td>
+          <td th:text="${l.categoria}">Categoria</td>
+        </tr>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</div>
+<!-- Sección de filtro por categorías -->
+<div th:replace="~{fragmentos :: filtrar}"></div>
+<!-- Sección que lleva al formulario para crear un nuevo libro -->
+<div th:replace="~{fragmentos :: nuevo_libro}"></div>
+</body>
+</html>
